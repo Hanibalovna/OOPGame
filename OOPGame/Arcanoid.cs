@@ -10,33 +10,34 @@ namespace OOPGame
     class Arcanoid : IGameObject
     {
         private ConsoleGraphics graphics;
-        private ConsoleImage img;
+        public ConsoleImage ImgArcanoid { get; set; }
         private int speedX, speedY;
-        private int x, y;
+        public int PlatformPositionX { get; set; }
+        public int PlatformPositionY { get; set; }
 
         public Arcanoid(ConsoleGraphics graphics)
         {
             this.graphics = graphics;
-            img = graphics.LoadImage("paddleBlue.png");
-            x = graphics.ClientWidth / 2 - img.Width / 2;
-            y = graphics.ClientWidth / 2 - img.Height/2;
+            ImgArcanoid = graphics.LoadImage("paddleBlue.png");
+            PlatformPositionX = graphics.ClientWidth / 2 - ImgArcanoid.Width / 2;
+            PlatformPositionY = graphics.ClientWidth / 2 - ImgArcanoid.Height / 2;
         }
         void IGameObject.Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(img, x, y);
+            graphics.DrawImage(ImgArcanoid, PlatformPositionX, PlatformPositionY);
         }
 
         void IGameObject.Update(GameEngine engine)
         {
             var arcanoidGameEngine = (ArcanoidGameEngine)engine;
 
-            if ((Input.IsKeyDown(Keys.RIGHT)) && x < graphics.ClientWidth- img.Width)
-                speedX = 15;
-            else if ((!Input.IsKeyDown(Keys.RIGHT)) || x > graphics.ClientWidth- img.Width )
+            if ((Input.IsKeyDown(Keys.RIGHT)) && PlatformPositionX < graphics.ClientWidth - ImgArcanoid.Width)
+                speedX = 20;
+            else if ((!Input.IsKeyDown(Keys.RIGHT)) || PlatformPositionX > graphics.ClientWidth - ImgArcanoid.Width)
                 speedX = 0;
-            if ((Input.IsKeyDown(Keys.LEFT))&& (x > 0))
-                speedX = -15;
-            x += speedX;
+            if ((Input.IsKeyDown(Keys.LEFT)) && (PlatformPositionX > 0))
+                speedX = -20;
+            PlatformPositionX += speedX;
 
         }
     }

@@ -13,19 +13,22 @@ namespace OOPGame
         private ConsoleImage img;
         private Arcanoid arcanoid;
         private int speedX, speedY;
-        private int x, y;
+        public int BallPositionX { get; set; }
+        public int BallPositionY { get; set; }
+        private bool IsGameBegin = true;
 
         public Ball(ConsoleGraphics graphics, Arcanoid arcanoid)
         {
             this.graphics = graphics;
             this.arcanoid = arcanoid;
             img = graphics.LoadImage("ballBlue.png");
-            x = graphics.ClientWidth / 2 - img.Width / 2;
-            y = graphics.ClientWidth / 2 - img.Height * 2;
+            BallPositionX = graphics.ClientWidth / 2 - img.Width / 2;
+            BallPositionY = graphics.ClientWidth / 2 - img.Height * 2;
         }
+
         void IGameObject.Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(img, x, y);
+            graphics.DrawImage(img, BallPositionX, BallPositionY);
         }
 
         void IGameObject.Update(GameEngine engine)
@@ -34,36 +37,42 @@ namespace OOPGame
             {
                 speedX = 10;
                 speedY = -10;
+                IsGameBegin = false;
             }
-            if (x > graphics.ClientWidth - img.Width)
+            if (BallPositionX > graphics.ClientWidth - img.Width)
             {
                 speedX = -10;
                 speedY = -10;
             }
-            if (y > graphics.ClientHeight - img.Height)
-            {
-                speedX = 0;
-                speedY = 0;
-            }
-            else if (y < 0)
+            else if (BallPositionY < 0)
             {
                 //speedX = -10;
                 speedY = 10;
             }
-            else if (x < 0)
+            else if (BallPositionX < 0)
             {
                 speedX = 10;
                 //speedY = 10;
             }
-            else if ((y >= img.Width) && (x >= arcanoid.platformPositionX) && (x <= arcanoid.platformPositionX + arcanoid.imgArcanoid.Width))
+            if (BallPositionY > graphics.ClientHeight - img.Height)
+            {
+                speedX = 0;
+                speedY = 0;
+            }
+            if ((IsGameBegin==false)&&(BallPositionY >= graphics.ClientHeight - arcanoid.PlatformPositionY) && (BallPositionX >= arcanoid.PlatformPositionX) && (BallPositionX <= arcanoid.PlatformPositionX + arcanoid.ImgArcanoid.Width/2))
             {
                 speedX = -10;
                 speedY = -10;
             }
-            x += speedX;
-            y += speedY;
-            x %= graphics.ClientWidth;
-            y %= graphics.ClientHeight;
+           else if ((IsGameBegin == false) && (BallPositionY >= graphics.ClientHeight - arcanoid.PlatformPositionY) && (BallPositionX >= arcanoid.PlatformPositionX + arcanoid.ImgArcanoid.Width /2) && (BallPositionX <= arcanoid.PlatformPositionX + arcanoid.ImgArcanoid.Width))
+            {
+                speedX = 10;
+                speedY = -10;
+            }
+            BallPositionX += speedX;
+            BallPositionY += speedY;
+            BallPositionX %= graphics.ClientWidth;
+            BallPositionY %= graphics.ClientHeight;
         }
     }
 }
