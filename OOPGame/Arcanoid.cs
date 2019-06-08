@@ -38,8 +38,6 @@ namespace OOPGame
                 speedX = -15;
             x += speedX;
 
- 
-
         }
     }
 }

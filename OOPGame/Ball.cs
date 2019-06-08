@@ -21,7 +21,7 @@ namespace OOPGame
             this.arcanoid = arcanoid;
             img = graphics.LoadImage("ballBlue.png");
             x = graphics.ClientWidth / 2 - img.Width / 2;
-            y = graphics.ClientWidth / 2 - img.Height*2;
+            y = graphics.ClientWidth / 2 - img.Height * 2;
         }
         void IGameObject.Render(ConsoleGraphics graphics)
         {
@@ -35,20 +35,30 @@ namespace OOPGame
                 speedX = 10;
                 speedY = -10;
             }
-            if (x > graphics.ClientWidth - img.Width )
+            if (x > graphics.ClientWidth - img.Width)
             {
                 speedX = -10;
                 speedY = -10;
             }
-            else if(y<0)
+            if (y > graphics.ClientHeight - img.Height)
             {
-                speedX = -10;
+                speedX = 0;
+                speedY = 0;
+            }
+            else if (y < 0)
+            {
+                //speedX = -10;
                 speedY = 10;
             }
-            else if(x<0)
+            else if (x < 0)
             {
                 speedX = 10;
-                speedY = 10;
+                //speedY = 10;
+            }
+            else if ((y >= img.Width) && (x >= arcanoid.platformPositionX) && (x <= arcanoid.platformPositionX + arcanoid.imgArcanoid.Width))
+            {
+                speedX = -10;
+                speedY = -10;
             }
             x += speedX;
             y += speedY;
