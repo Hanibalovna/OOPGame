@@ -49,7 +49,7 @@
     <Compile Include="Arcanoid.cs" />
     <Compile Include="ArcanoidGameEngine.cs" />
     <Compile Include="Ball.cs" />
-    <Compile Include="Bricks.cs" />
+    <Compile Include="Brick.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="GameEngine.cs" />

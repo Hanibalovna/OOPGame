@@ -20,8 +20,9 @@ namespace OOPGame
             this.graphics = graphics;
             ImgArcanoid = graphics.LoadImage("paddleBlue.png");
             PlatformPositionX = graphics.ClientWidth / 2 - ImgArcanoid.Width / 2;
-            PlatformPositionY = graphics.ClientWidth / 2 - ImgArcanoid.Height / 2;
+            PlatformPositionY = graphics.ClientHeight - ImgArcanoid.Height ;
         }
+
         void IGameObject.Render(ConsoleGraphics graphics)
         {
             graphics.DrawImage(ImgArcanoid, PlatformPositionX, PlatformPositionY);
@@ -38,7 +39,6 @@ namespace OOPGame
             if ((Input.IsKeyDown(Keys.LEFT)) && (PlatformPositionX > 0))
                 speedX = -20;
             PlatformPositionX += speedX;
-
         }
     }
 }

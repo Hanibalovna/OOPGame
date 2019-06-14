@@ -19,9 +19,10 @@ namespace OOPGame
             FieldHeight = fieldHeight;
             var arcanoid = new Arcanoid(graphics);
             var ball = new Ball(graphics, arcanoid);
+            var brick = new Brick(graphics);
             AddObject(arcanoid);
             AddObject(ball);
-            AddObject(new Bricks(graphics));
+            AddObject(brick);
         }
     }
 }
