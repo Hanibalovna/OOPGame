@@ -11,10 +11,10 @@ namespace OOPGame
     {
         private ConsoleGraphics graphics;
         public ConsoleImage ImgBrick { get; set; }
-        private object Brick;
+        private object BrickOne;
         public int BrickPositionX { get; set; }
         public int BrickPositionY { get; set; }
-        private int CountBricks;
+        public int CountBricks;
 
         public Brick(ConsoleGraphics graphics)
         {
@@ -24,12 +24,12 @@ namespace OOPGame
 
         void IGameObject.Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(ImgBrick, BrickPositionX, BrickPositionY);
+            graphics.DrawImage(ImgBrick, 0, 0);           
         }
 
         void IGameObject.Update(GameEngine engine)
         {
-
+            
         }
     }
 }
