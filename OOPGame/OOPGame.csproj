@@ -57,6 +57,7 @@
     <Compile Include="SampleBullet.cs" />
     <Compile Include="SampleGameEngine.cs" />
     <Compile Include="SamplePlayer.cs" />
+    <Compile Include="StartButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ballBlue.png">
@@ -74,6 +75,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="paddleBlue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="start_button.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

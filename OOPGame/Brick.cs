@@ -11,7 +11,6 @@ namespace OOPGame
     {
         private ConsoleGraphics graphics;
         public ConsoleImage ImgBrick { get; set; }
-        private object Brick;
         public int BrickPositionX { get; set; }
         public int BrickPositionY { get; set; }
         private int CountBricks;
