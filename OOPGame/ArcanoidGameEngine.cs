@@ -12,7 +12,7 @@ namespace OOPGame
     {
         public int FieldWidth { get;}
         public int FieldHeight { get;}
-        
+
         public ArcanoidGameEngine(ConsoleGraphics graphics, int fileWidth, int fieldHeight) : base(graphics)
         {
             FieldWidth = fileWidth;
@@ -24,5 +24,14 @@ namespace OOPGame
             AddObject(ball);
             AddObject(brick);
         }
+
+        public void Bricks()
+            {           
+           for (int i = 0; i <= CountBricks; i++)
+			{                  
+             BrickPositionX += ImgBrick.Width;
+			}
+           
+            }
     }
 }
