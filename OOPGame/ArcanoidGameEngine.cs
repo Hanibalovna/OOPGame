@@ -10,28 +10,26 @@ namespace OOPGame
     class ArcanoidGameEngine : GameEngine
 
     {
-        public int FieldWidth { get;}
-        public int FieldHeight { get;}
+        public int FieldWidth { get; }
+        public int FieldHeight { get; }
+        private Brick brick;
 
-        public ArcanoidGameEngine(ConsoleGraphics graphics, int fileWidth, int fieldHeight) : base(graphics)
+        public ArcanoidGameEngine(ConsoleGraphics graphics, int fileWidth, int fieldHeight, Brick brick) : base(graphics)
         {
             FieldWidth = fileWidth;
             FieldHeight = fieldHeight;
+            this.brick = brick;
             var arcanoid = new Arcanoid(graphics);
-            var ball = new Ball(graphics, arcanoid);
-            var brick = new Brick(graphics);
             AddObject(arcanoid);
-            AddObject(ball);
-            AddObject(brick);
-        }
-
-        public void Bricks()
-            {           
-           for (int i = 0; i <= CountBricks; i++)
-			{                  
-             BrickPositionX += ImgBrick.Width;
-			}
-           
+           var bricks = new List<Brick>();
+            for (int i = 0; i < brick.brickCount; i++)
+            {
+                AddObject(new Brick(graphics, 128 + brick.BrickPositionX * i, 0));
+                AddObject(new Brick(graphics, 96 + brick.BrickPositionX * (i-1), 36));
             }
+            var ball = new Ball(graphics, arcanoid);
+            AddObject(ball);
+        }
+ 
     }
 }

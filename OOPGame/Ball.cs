@@ -10,7 +10,7 @@ namespace OOPGame
     class Ball : IGameObject
     {
         private ConsoleGraphics graphics;
-        private ConsoleImage img;
+        private ConsoleImage ImgBall;
         private Arcanoid arcanoid;
         private int speedX, speedY;
         public int BallPositionX { get; set; }
@@ -21,14 +21,17 @@ namespace OOPGame
         {
             this.graphics = graphics;
             this.arcanoid = arcanoid;
-            img = graphics.LoadImage("ballBlue.png");
-            BallPositionX = graphics.ClientWidth / 2 - img.Width / 2;
-            BallPositionY = graphics.ClientWidth / 2 - img.Height * 2;
+            ImgBall = graphics.LoadImage("ballBlue.png");
+            BallPositionX = graphics.ClientWidth / 2 - ImgBall.Width / 2;
+            BallPositionY = graphics.ClientWidth / 2 - ImgBall.Height * 2;
         }
+        public void SetSpeed(int speedX, int speedY)
+        {
 
+        }
         void IGameObject.Render(ConsoleGraphics graphics)
         {
-            graphics.DrawImage(img, BallPositionX, BallPositionY);
+            graphics.DrawImage(ImgBall, BallPositionX, BallPositionY);
         }
 
         void IGameObject.Update(GameEngine engine)
@@ -38,7 +41,7 @@ namespace OOPGame
                 speedX = 10;
                 speedY = -10;
             }
-            if (BallPositionX > graphics.ClientWidth - img.Width)
+            if (BallPositionX > graphics.ClientWidth - ImgBall.Width)
             {
                 speedX = -10;
                 speedY = -10;
@@ -51,21 +54,14 @@ namespace OOPGame
             {
                 speedX = 10;
             }
-            else if (BallPositionY > graphics.ClientHeight - img.Height)
+            else if (BallPositionY > graphics.ClientHeight - ImgBall.Height)
             {
                 speedX = 0;
                 speedY = 0;
             }
-            if ((BallPositionY > arcanoid.PlatformPositionY - img.Height) && (BallPositionX >= arcanoid.PlatformPositionX) && (BallPositionX <= arcanoid.PlatformPositionX + arcanoid.ImgArcanoid.Width / 2))
-            {
-                speedX = -10;
-                speedY = -10;
-            }
-            else if ((BallPositionY > arcanoid.PlatformPositionY - img.Height) && (BallPositionX >= arcanoid.PlatformPositionX + arcanoid.ImgArcanoid.Width / 2) && (BallPositionX <= arcanoid.PlatformPositionX + arcanoid.ImgArcanoid.Width))
-            {
-                speedX = 10;
-                speedY = -10;
-            }
+            arcanoid.ArcanoidTouch(BallPositionX, BallPositionY);
+            speedX = -10;
+            speedY = -10;
 
             BallPositionX += speedX;
             BallPositionY += speedY;

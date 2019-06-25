@@ -13,12 +13,14 @@ namespace OOPGame
         public ConsoleImage ImgBrick { get; set; }
         public int BrickPositionX { get; set; }
         public int BrickPositionY { get; set; }
-        private int CountBricks;
+        public int brickCount;
 
-        public Brick(ConsoleGraphics graphics)
+        public Brick(ConsoleGraphics graphics, int brickPositionX, int brickPositionY)
         {
             this.graphics = graphics;
             ImgBrick = graphics.LoadImage("element_blue.png");
+            BrickPositionX = brickPositionX;
+            BrickPositionY = brickPositionY;
         }
 
         void IGameObject.Render(ConsoleGraphics graphics)

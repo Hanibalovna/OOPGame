@@ -54,9 +54,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleBullet.cs" />
-    <Compile Include="SampleGameEngine.cs" />
-    <Compile Include="SamplePlayer.cs" />
     <Compile Include="StartButton.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,15 +63,7 @@
     <Content Include="element_blue.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="element_green.png" />
-    <Content Include="element_grey.png" />
-    <Content Include="element_purple.png" />
-    <Content Include="element_red.png" />
-    <Content Include="element_yellow.png" />
-    <Content Include="pacman.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="paddleBlue.png">
+    <Content Include="paddleBlu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="start_button.png">

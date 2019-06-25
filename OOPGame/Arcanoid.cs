@@ -14,11 +14,12 @@ namespace OOPGame
         private int speedX, speedY;
         public int PlatformPositionX { get; set; }
         public int PlatformPositionY { get; set; }
+        private bool touch;
 
         public Arcanoid(ConsoleGraphics graphics)
         {
             this.graphics = graphics;
-            ImgArcanoid = graphics.LoadImage("paddleBlue.png");
+            ImgArcanoid = graphics.LoadImage("paddleBlu.png");
             PlatformPositionX = graphics.ClientWidth / 2 - ImgArcanoid.Width / 2;
             PlatformPositionY = graphics.ClientHeight - ImgArcanoid.Height ;
         }
@@ -39,6 +40,14 @@ namespace OOPGame
             if ((Input.IsKeyDown(Keys.LEFT)) && (PlatformPositionX > 0))
                 speedX = -20;
             PlatformPositionX += speedX;
+        }
+
+       public bool ArcanoidTouch(int x, int y)//пересечение платформы и точки
+        {
+            if (x >= PlatformPositionX + ImgArcanoid.Width || y >= PlatformPositionY + ImgArcanoid.Height)
+                return true;
+            else
+                return false;
         }
     }
 }

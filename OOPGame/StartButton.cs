@@ -14,6 +14,7 @@ namespace OOPGame
         private int ButtonPositionX;
         private int ButtonPositionY;
 
+
         public StartButton(ConsoleGraphics graphics)
         {
             this.graphics = graphics;
@@ -35,6 +36,6 @@ namespace OOPGame
             //if (x <= mx && x + w >= mx && y <= my && y + h >= my && Input.IsMouseLeftButtonDown)
             //    MouseDown?.Invoke(this, EventArgs.Empty);
         }
-        public event EventHandler MouseDown;
+       // public event EventHandler MouseDown;
     }
 }
